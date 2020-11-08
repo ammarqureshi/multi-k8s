@@ -1,4 +1,6 @@
 sudo: required
+language: generic
+
 services:
   - docker
 
@@ -13,11 +15,9 @@ after_success:
   - docker build -t mintedguy/multi-nginx ./nginx
   - docker build -t mintedguy/multi-server ./server
   - docker build -t mintedguy/multi-worker ./worker
-
-  # log in to docker cli
+  # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-
-  # take those images and push them to docker hub
+  # Take those images and push them to docker hub
   - docker push mintedguy/multi-client
   - docker push mintedguy/multi-nginx
   - docker push mintedguy/multi-server
