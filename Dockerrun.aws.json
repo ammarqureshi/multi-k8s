@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "client",
-      "image": "mintedguy/multi-client-docker",
+      "image": "mintedguy/multi-client",
       "hostname": "client",
       "essential": false,
       "memory": 128

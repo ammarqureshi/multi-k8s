@@ -11,14 +11,14 @@ script:
   - docker run -e CI=true mintedguy/react-test npm test
 
 after_success:
-  - docker build -t mintedguy/multi-client-docker ./client
+  - docker build -t mintedguy/multi-client ./client
   - docker build -t mintedguy/multi-nginx ./nginx
   - docker build -t mintedguy/multi-server ./server
   - docker build -t mintedguy/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push mintedguy/multi-client-docker
+  - docker push mintedguy/multi-client
   - docker push mintedguy/multi-nginx
   - docker push mintedguy/multi-server
   - docker push mintedguy/multi-worker
